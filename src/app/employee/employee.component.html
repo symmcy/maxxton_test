@@ -1,0 +1,34 @@
+<h1>Employee Details</h1>
+<div>
+  <button id="sortByName" (click)="sortDataByName()">Sort by Name</button>
+  <button id="sortByDate" (click)="sortDataByDate()">Sort by Date</button>
+  <button id="getCandidatesWithExperience" (click)="filterDataWithExp()">
+    Candidates with 2+ yrs exp
+  </button>
+  <button id="getDistinctRecords" (click)="getDistinctRecords()">
+    Get Distinct Departments
+  </button>
+  <button
+    id="removeDevelopmentCandidates"
+    (click)="removeDevelopmentCandidates()"
+  >
+    Remove Candidates from development
+  </button>
+</div>
+<div>
+  <input [(ngModel)]="searchString" #ctrl="ngModel" />
+  <button id="searchBtn" (click)="search()">Search</button>
+</div>
+<table>
+  <tr>
+    <th *ngFor="let column of headers">
+      {{ column }}
+    </th>
+  </tr>
+  <tr *ngFor="let row of searched_data">
+    <td>{{ row.id }}</td>
+    <td>{{ row.name }}</td>
+    <td>{{ row.department }}</td>
+    <td>{{ row.joining_date | date: "dd/MM/yyyy" }}</td>
+  </tr>
+</table>
