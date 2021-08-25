@@ -1,34 +1,66 @@
-<h1>Employee Details</h1>
-<div>
-  <button id="sortByName" (click)="sortDataByName()">Sort by Name</button>
-  <button id="sortByDate" (click)="sortDataByDate()">Sort by Date</button>
-  <button id="getCandidatesWithExperience" (click)="filterDataWithExp()">
-    Candidates with 2+ yrs exp
-  </button>
-  <button id="getDistinctRecords" (click)="getDistinctRecords()">
-    Get Distinct Departments
-  </button>
-  <button
-    id="removeDevelopmentCandidates"
-    (click)="removeDevelopmentCandidates()"
-  >
-    Remove Candidates from development
-  </button>
+<div class="container">
+  <h1 class="bootsrap heading">Employee Details</h1>
+  <div>
+    <button id="sortByName" class="btn btn-primary" (click)="sortDataByName()">
+      Sort by Name
+    </button>
+    <button id="sortByDate" class="btn btn-primary" (click)="sortDataByDate()">
+      Sort by Date
+    </button>
+    <button
+      id="getCandidatesWithExperience"
+      class="btn btn-primary"
+      (click)="filterDataWithExp()"
+    >
+      Candidates with 2+ years experience
+    </button>
+    <button
+      id="getDistinctRecords"
+      class="btn btn-primary"
+      (click)="getDistinctRecords()"
+    >
+      Get Distinct Departments
+    </button>
+    
+    <button
+      id="removeDevelopmentCandidates"
+      class="btn btn-primary"
+      (click)="removeDevelopmentCandidates()"
+    >
+      Remove Candidates from development department
+    </button>
+  </div>
+  <div>
+    <input [(ngModel)]="searchString" #ctrl="ngModel" />
+   
+    <button type="button" class="btn btn-primary" (click)="search()">
+      <i class="fa fa-search"></i>
+      Search
+    </button>
+    <button id="refreshBtn" class="btn btn-warning" (click)="refresh()">
+      <i class="fa fa-recycle"></i>
+      Refresh
+    </button>
+    
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      
+      <tr>
+        <th *ngFor="let column of headers">
+          {{ column }}
+        </th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let row of searched_data">
+        <td>{{ row.id }}</td>
+        <td>{{ row.name }}</td>
+        <td>{{ row.department }}</td>
+        <td>{{ row.joining_date | date: "dd/MM/yyyy" }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-<div>
-  <input [(ngModel)]="searchString" #ctrl="ngModel" />
-  <button id="searchBtn" (click)="search()">Search</button>
-</div>
-<table>
-  <tr>
-    <th *ngFor="let column of headers">
-      {{ column }}
-    </th>
-  </tr>
-  <tr *ngFor="let row of searched_data">
-    <td>{{ row.id }}</td>
-    <td>{{ row.name }}</td>
-    <td>{{ row.department }}</td>
-    <td>{{ row.joining_date | date: "dd/MM/yyyy" }}</td>
-  </tr>
-</table>

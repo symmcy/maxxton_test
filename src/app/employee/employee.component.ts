@@ -122,7 +122,6 @@ export class EmployeeComponent implements OnInit {
   }
 
   getDistinctRecords() {
-    // let result = new Map<string, string>();
     let result = new Map<string, string>();
     const uniqueDepts = [
       ...new Set(this.candidate_data.map((item) => item.department)),
@@ -136,12 +135,20 @@ export class EmployeeComponent implements OnInit {
       }
       result.set(uniqueDepts[i], count.toString());
     }
-    console.log('Result:', result);
+    this.searched_data = [];
+    
+    alert(JSON.stringify([...result]));
+    
+  
   }
 
   removeDevelopmentCandidates() {
     this.searched_data = this.candidate_data.filter(
       (emp) => emp.department != 'Development'
     );
+  }
+
+  refresh() {
+    location.reload();
   }
 }

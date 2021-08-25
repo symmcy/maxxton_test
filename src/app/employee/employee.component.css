@@ -1,11 +1,8 @@
-table,
-th,
-td {
-  border: 1px solid black;
-  font-size: 2rem;
-  border-collapse: collapse;
-  text-align: center;
+button {
+  margin: 10px;
 }
-table {
-  width: 100%;
+
+table th {
+  background: #000;
+  color: #fff;
 }
